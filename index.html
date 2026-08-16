@@ -46,58 +46,56 @@
             }
           });
       
-      $(".downHealth").on("click", function(){
-          if (currHealth == 0){
-              alert("You're already dead!")
-          }
-          else {
-              currHealth--;
-              $(".displayHealth").text(currHealth);
+          $(".downHealth").on("click", function(){
               if (currHealth == 0){
-                  alert("You're dead! sorry...")
+                  alert("You're already dead!")
               }
-          }
-      });
+              else {
+                  currHealth--;
+                  $(".displayHealth").text(currHealth);
+                  if (currHealth == 0){
+                      alert("You're dead! sorry...")
+                  }
+              }
+          });
       
-      $(".upPoints").on("click", function(){
-            if (currpoints == 20){
-                alert("You already won!")
-            }
-            else {
-                currpoints++;
-                $(".displayPoints").text(currpoints);
+          $(".upPoints").on("click", function(){
                 if (currpoints == 20){
-                    alert("You got 20 points, you are the King of Tokyo!")
+                    alert("You already won!")
                 }
-            }
-          });
+                else {
+                    currpoints++;
+                    $(".displayPoints").text(currpoints);
+                    if (currpoints == 20){
+                        alert("You got 20 points, you are the King of Tokyo!")
+                    }
+                }
+            });
       
-      $(".downPoints").on("click", function(){
-          if (currpoints == 0){
-              alert("Points can't go below zero")
-          }
-          else {
-              currpoints--;
-              $(".displayPoints").text(currpoints);
-          }
-      });
+            $(".downPoints").on("click", function(){
+                if (currpoints == 0){
+                    alert("Points can't go below zero")
+                }
+                else {
+                    currpoints--;
+                    $(".displayPoints").text(currpoints);
+                }
+            });
       
-      $(".upEnergy").on("click", function(){
-            
-                currEnergy++;
-                $(".displayEnergy").text(currEnergy);
-            
-          });
+            $(".upEnergy").on("click", function(){
+               currEnergy++;
+                 $(".displayEnergy").text(currEnergy);
+            });
       
-      $(".downEnergy").on("click", function(){
-          if (currEnergy == 0){
-              alert("Energy can't go below zero")
-          }
-          else {
-              currEnergy--;
-              $(".displayEnergy").text(currEnergy);
-          }
-      });
+            $(".downEnergy").on("click", function(){
+                if (currEnergy == 0){
+                    alert("Energy can't go below zero")
+                }
+                else {
+                    currEnergy--;
+                    $(".displayEnergy").text(currEnergy);
+                }
+            });
       });
   </script>
   <style>
@@ -146,7 +144,7 @@
       <div class="row">
         <div class="container">
           <button class="arrowbtn upEnergy col-xs-3">&#8593;</button>
-          <h1 class="displayEnergy col-xs-6"></h1>
+          <h1 class="displayEnergy text-center col-xs-6"></h1>
           <button class="arrowbtn downEnergy col-xs-3">&#8595;</button>
         </div>
       </div>
