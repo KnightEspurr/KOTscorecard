@@ -1,31 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>KOT Scorecard</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+       let defaultHealth = 12;
+       let defaultpoints = 0;
+       let defaultEnergy = 0;
+          
+          let currHealth = defaultHealth;
+          let currpoints = defaultpoints;
+          let currEnergy = defaultEnergy;
+      
+      $(document).ready(function(){
+          $(".displayHealth").text(defaultHealth);
+          $(".displayPoints").text(defaultpoints);
+          $(".displayEnergy").text(defaultEnergy);
+          
+           $(".reset-button").on("click", function(){
+          currHealth = defaultHealth;
+          currpoints = defaultpoints;
+          currEnergy = defaultEnergy;
+          $(".displayHealth").text(defaultHealth);
+          $(".displayPoints").text(defaultpoints);
+          $(".displayEnergy").text(defaultEnergy);
+          });  
+          
+          $(".upHealth").on("click", function(){
+            if (currHealth == 12){
+                alert("You're at max health!")
+            }
+            else if (currHealth == 10){
+                alert("You cannot heal above 10")
+            }
+            else if (currHealth == 0){
+                alert("You're already dead!")
+            }
+            else {
+                currHealth++;
+                $(".displayHealth").text(currHealth);
+            }
+          });
+      
+      $(".downHealth").on("click", function(){
+          if (currHealth == 0){
+              alert("You're already dead!")
+          }
+          else {
+              currHealth--;
+              $(".displayHealth").text(currHealth);
+              if (currHealth == 0){
+                  alert("You're dead! sorry...")
+              }
+          }
+      });
+      
+      $(".upPoints").on("click", function(){
+            if (currpoints == 20){
+                alert("You already won!")
+            }
+            else {
+                currpoints++;
+                $(".displayPoints").text(currpoints);
+                if (currpoints == 20){
+                    alert("You got 20 points, you are the King of Tokyo!")
+                }
+            }
+          });
+      
+      $(".downPoints").on("click", function(){
+          if (currpoints == 0){
+              alert("Points can't go below zero")
+          }
+          else {
+              currpoints--;
+              $(".displayPoints").text(currpoints);
+          }
+      });
+      
+      $(".upEnergy").on("click", function(){
+            
+                currEnergy++;
+                $(".displayEnergy").text(currEnergy);
+            
+          });
+      
+      $(".downEnergy").on("click", function(){
+          if (currEnergy == 0){
+              alert("Energy can't go below zero")
+          }
+          else {
+              currEnergy--;
+              $(".displayEnergy").text(currEnergy);
+          }
+      });
+      });
+  </script>
+  <style>
+      .health {
+          color: red;
+      }
+      .points {
+          color: skyblue;
+      }
+      .energy{
+          color: green;
+      }
+      .arrowbtn{
+          font-size: 40px;
+      }
+  </style>
 </head>
 <body>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
-      <h3>Column 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    <div class="col-sm-4 health">
+      <h1>Health</h1>
+      <div class="row">
+      <button class="arrowbtn upHealth">&#8593;</button>
+      <h1 class="displayHealth"></h1>
+      <button class="arrowbtn downHealth">&#8595;</button>
+
+      </div>
     </div>
-    <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    <div class="col-sm-4 points">
+      <h1>Points</h1>
+    <div class="row">
+      <button class="arrowbtn upPoints">&#8593;</button>
+      <h1 class="displayPoints"></h1>
+            <button class="arrowbtn downPoints">&#8595;</button>
+      </div>
     </div>
-    <div class="col-sm-4">
-      <h3>Column 3</h3>        
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    <div class="col-sm-4 energy">
+      <h1>Energy</h1>
+            <div class="row">
+      <button class="arrowbtn upEnergy">&#8593;</button>
+      <h1 class="displayEnergy"></h1>
+            <button class="arrowbtn downEnergy">&#8595;</button>
+
+            </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <button class="reset-button">RESET</button>
     </div>
   </div>
 </div>
